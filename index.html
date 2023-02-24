@@ -100,13 +100,13 @@
             </div>
         </div>
     </div>
-	<input id="imageFileUploader" type="file" accept=".jpg, .png, .gif"/><button id="completeButton">完了</button>
+    <input id="imageFileUploader" type="file" accept=".jpg, .png, .gif"/><button id="completeButton">完了</button>
   <script>
     //framerate = 60fps
     array = [...Array(25)].map((_, i) => i); //=> [ 0, 1, 2, 3, 4 ]
-	let imageFileUploader;
-	let completeButton;
-	let questionImage;
+    let imageFileUploader;
+    let completeButton;
+    let questionImage;
     let cover;
     let isPause = true;
 
@@ -118,17 +118,17 @@
         [array[i], array[j]] = [array[j], array[i]]; // 要素を入れ替えます
       }
     }
-	
-	const addCompleteButtonEvent = function() {
-	    completeButton.addEventListener("click", function(e) {
-		    imageFile = imageFileUploader.files[0];
-			
-			// ファイルのブラウザ上でのURLを取得する
+    
+    const addCompleteButtonEvent = function() {
+        completeButton.addEventListener("click", function(e) {
+            imageFile = imageFileUploader.files[0];
+            
+            // ファイルのブラウザ上でのURLを取得する
             let blobUrl = window.URL.createObjectURL(imageFile);
             questionImage.src = blobUrl;
-			imageFileUploader.value = "";
-		});
-	}
+            imageFileUploader.value = "";
+        });
+    }
 
     const addKeyOperation = function() {
         document.addEventListener("keydown", function(e){
@@ -139,7 +139,7 @@
                 e.preventDefault();
                 if(isPause) {
                     isPause = false;
-					// BGM再開用(BGMが不使用のため今は使わない)
+                    // BGM再開用(BGMが不使用のため今は使わない)
                     /*if(frameCount / 60 <= 33.9) {
                         console.log(frameCount / 60)
                     }*/
@@ -173,11 +173,11 @@
 
     window.addEventListener("load", (event) => {
         shuffle(array);
-		imageFileUploader = document.getElementById("imageFileUploader");
-		completeButton = document.getElementById("completeButton");
-		questionImage = document.getElementById("questionImage");
+        imageFileUploader = document.getElementById("imageFileUploader");
+        completeButton = document.getElementById("completeButton");
+        questionImage = document.getElementById("questionImage");
         cover = document.getElementById("cover");
-		addCompleteButtonEvent();
+        addCompleteButtonEvent();
         addKeyOperation();
     });
   </script>
