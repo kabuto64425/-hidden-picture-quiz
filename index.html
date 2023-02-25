@@ -112,6 +112,7 @@
                 <div>
                     <ul>
                         <li><span id="menuInfo">画像を選択</span></li>
+                        <li id="fileInfo" style="visibility: hidden">画像ファイル名: <span id="fileName"></span></li>
                     </ul>
                 </div>
             </div>
@@ -196,9 +197,11 @@
                 // ファイルのブラウザ上でのURLを取得する
                 let blobUrl = window.URL.createObjectURL(imageFile);
                 questionImage.onload = function() {
-                    infoUpper.textContent = "Enterでスタート!"
-                    infoLower.textContent = "Spaceで一時停止"
-                    menuInfo.textContent = "画像セット完了!↑↑上にスクロールして出題"
+                    infoUpper.textContent = "Enterでスタート!";
+                    infoLower.textContent = "Spaceで一時停止";
+                    menuInfo.textContent = "画像セット完了!↑↑上にスクロールして出題";
+                    fileInfo.style.visibility = "visible";
+                    fileNameSpan.textContent = imageFile.name;
                     imageFileUploader.value = "";
                 }
                 questionImage.src = blobUrl;
@@ -262,6 +265,8 @@
             imageFileUploader = document.getElementById("imageFileUploader");
             completeButton = document.getElementById("completeButton");
             questionImage = document.getElementById("questionImage");
+            fileInfo = document.getElementById("fileInfo");
+            fileNameSpan = document.getElementById("fileName");
             infoUpper = document.getElementById("infoUpper");
             infoLower = document.getElementById("infoLower");
             menuInfo = document.getElementById("menuInfo");
