@@ -189,6 +189,7 @@
 
         const addCompleteButtonEvent = function() {
             completeButton.addEventListener("click", function(e) {
+                // 1回しかセットできないようにしているため必要ないかもしれないが念のため
                 let beforeURL = questionImage.src;
                 imageFile = imageFileUploader.files[0];
                 if(!imageFile) {
@@ -204,6 +205,9 @@
                     fileInfo.style.visibility = "visible";
                     fileNameSpan.textContent = imageFile.name;
                     imageFileUploader.value = "";
+                    imageFileUploader.disabled = true;
+                    completeButton.disabled = true;
+                    // 1回しかセットできないようにしているため必要ないかもしれないが念のため
                     window.URL.revokeObjectURL(beforeURL);
                 }
                 questionImage.src = blobUrl;
