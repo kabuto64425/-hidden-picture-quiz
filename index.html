@@ -189,6 +189,7 @@
 
         const addCompleteButtonEvent = function() {
             completeButton.addEventListener("click", function(e) {
+                let beforeURL = questionImage.src;
                 imageFile = imageFileUploader.files[0];
                 if(!imageFile) {
                     alert("画像を選択してください")
@@ -203,6 +204,7 @@
                     fileInfo.style.visibility = "visible";
                     fileNameSpan.textContent = imageFile.name;
                     imageFileUploader.value = "";
+                    window.URL.revokeObjectURL(beforeURL);
                 }
                 questionImage.src = blobUrl;
             });
